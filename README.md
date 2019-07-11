@@ -1,16 +1,23 @@
-# Fill word solver
+# Fill Word Puzzle Solver
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Build Status](https://travis-ci.com/Abzac/guss.svg?branch=master)](https://travis-ci.com/Abzac/guss)
+[![Build Status](https://travis-ci.com/Abzac/fill-word-solver.svg?branch=master)](https://travis-ci.com/Abzac/fill-word-solver)
 <a href="https://black.readthedocs.io/en/stable/?badge=stable"><img alt="Documentation Status" src="https://readthedocs.org/projects/black/badge/?version=stable"></a>
 <a href="https://github.com/python/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 
 <img alt="Fill Word" src="https://raw.githubusercontent.com/Abzac/fill-word-solver/master/fill-word.jpeg">
 
+# Table of contents
+- [Intro](#intro)
+- [What is "Fill word"?](#what-is--fill-word--)
+- [Usage example](#usage-example)
+- [Algorithm](#algorithm)
+- [Algorithm work example](#algorithm-work-example)
+- [Dictionaries](#dictionaries)
+
 # Intro
 
 Helps to solve a "Fill Word" puzzle.
-
 
 # What is "Fill word"?
 "Fill words", also known as the "Hungarian crossword" puzzles - is a puzzle in which you want to find all the words inscribed in a square grid. 
@@ -85,161 +92,7 @@ You may see usage example in `src/solver.py`
 #    #    #    #    #    #
 #    #    #    #    #    #
 
-==== между (1) ====
-м    е    ж    д    #    #
-#    #    #    у    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-
-==== алан (1) ====
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    а    #    #
-#    #    #    л    а    н
-
-==== брод (1) ====
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    о    р    б    #    #
-#    д    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-
-==== бром (1) ====
-#    #    #    #    #    #
-#    #    #    #    #    м
-#    #    #    б    р    о
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-
-==== горб (2) ====
-#    #    #    #    #    #
-#    г    о    #    #    #
-#    #    р    б    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-
-#    #    #    #    #    #
-#    г    #    #    #    #
-#    о    р    б    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-
-==== гром (1) ====
-#    #    #    #    #    #
-#    #    #    #    г    м
-#    #    #    #    р    о
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-
-==== грош (1) ====
-#    #    #    #    #    #
-#    #    #    #    г    #
-#    #    #    #    р    #
-#    #    #    #    о    #
-#    #    #    #    ш    #
-#    #    #    #    #    #
-
-==== джем (1) ====
-м    е    ж    д    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-
-==== дуга (1) ====
-#    #    #    д    а    #
-#    #    #    у    г    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-
-==== морг (1) ====
-#    #    #    #    #    #
-#    #    #    #    г    м
-#    #    #    #    р    о
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-
-==== ноша (2) ====
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    о    н
-#    #    #    #    ш    #
-#    #    #    #    а    #
-
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    о    н
-#    #    #    а    ш    #
-#    #    #    #    #    #
-
-==== омег (1) ====
-м    е    #    #    #    #
-о    г    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-
-==== сорт (1) ====
-#    #    #    #    #    #
-#    #    #    #    #    #
-с    о    р    #    #    #
-#    #    т    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-
-==== трос (1) ====
-#    #    #    #    #    #
-#    #    #    #    #    #
-с    о    р    #    #    #
-#    #    т    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-
-==== утро (2) ====
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    о    р    #    #    #
-#    #    т    у    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-
-#    #    #    #    #    #
-#    #    о    #    #    #
-#    #    р    #    #    #
-#    #    т    у    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-
-==== шала (2) ====
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    а    ш    #
-#    #    #    л    а    #
-
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    #    #    #
-#    #    #    а    ш    #
-#    #    #    л    а    #
+<...>
 ```
 
 # Algorithm
@@ -281,7 +134,7 @@ d = {
                 }  
             },
             'x': {
-                None: {},  # mark meaning that `find` ends here
+                None: {},  # mark meaning that `fix` ends here
             }
         }
     },
@@ -319,6 +172,20 @@ f * *
 list(d['f'].keys()) == ['i', 'x']
 ```
 
+`d['f']` is 
+```python
+{
+    'i': {
+        'n': {
+            ...
+        },
+        'x': {
+            ...
+        }
+    }
+}
+```
+
 3. Now we try to move to all possible directions, right and down, as for now. We have a letter _"d"_ down, and letter _"i"_ to the left
 ```
 f i *
@@ -348,6 +215,28 @@ _ * *
 d = f['i']
 ```
 
+Now `d` is
+```python
+{
+        'n': {
+            'd': {
+                'i': {
+                    'n': {
+                        'g': {
+                            None: {},  # mark meaning that `finding` ends here
+                        },
+                    },
+                None: {},  # mark meaning that `find` ends here, but we could possibly explore next to `finding`
+                }
+            }  
+        },
+        'x': {
+            None: {},  # mark meaning that `fix` ends here
+        }
+}
+```
+Meaning having prefix _"fi"_ we can explore only letters _"n"_ or _"x"_ next.
+
 7. OK. Let's move next. We can move right and down (but we can't go back in Depth-First Search)
 ```
 f i x
@@ -370,7 +259,7 @@ So we can add the word `fix` to the resulting found words list.
 10. But we can not stop yet! We have to move next because we could possibly have some words starting with _"fix"_, but longer, like "fixing".
 Unfortunately, in this example, we can not find more words, because the only explorable way, "fixr" is not an English word, nor a prefix for some English word. 
 
-So, our search is ended here. This algorithm would find a word _"run"_ as well, but we would skip it in this example.
+So, our search is ended here. We found a word _"fix"_, although this algorithm would find a word _"run"_ as well, but we would skip it in this example.
  
 
 # Dictionaries
