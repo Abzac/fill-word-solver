@@ -5,6 +5,8 @@
 <a href="https://black.readthedocs.io/en/stable/?badge=stable"><img alt="Documentation Status" src="https://readthedocs.org/projects/black/badge/?version=stable"></a>
 <a href="https://github.com/python/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 
+<img alt="Fill Word" src="https://raw.githubusercontent.com/Abzac/fill-word-solver/master/fill-word.jpeg">
+
 # Intro
 
 Helps to solve a "Fill Word" puzzle.
